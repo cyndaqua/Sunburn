@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.cyndaqua.sunburn.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "Sunfire", 
+    "Daylight"
+  ],
+  "client": [],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "sunburn",
+  "version": "${version}",
+
+  "name": "Sunlight Death",
+  "description": "After the first minecraft day, the sun becomes lethal to players.",
+  "authors": [
+    "cyndaqua"
+  ],
+  "contact": {
+    "homepage": "https://mod.cyndaqua.com/",
+    "sources": "https://github.com/cyndaqua/Sunburn"
+  },
+
+  "license": "CC0-1.0",
+  "icon": "assets/sunburn/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.cyndaqua.sunburn.SunMod"
+    ]
+  },
+  "mixins": [
+    "sunburn.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.11",
+    "fabric-api": "*",
+    "minecraft": "~1.19.3",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
