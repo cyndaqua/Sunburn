@@ -26,7 +26,7 @@ public abstract class Daylight extends World { //Intended to broadcast to chat w
         super(properties, registryRef, dimension, profiler, isClient, debugWorld, seed, maxChainedNeighborUpdates);
     }
     
-    @Inject(method = "", at = @At("RETURN")) //Unable to determine descriptor for @Inject target method
+    @Inject(method = "tick", at = @At("RETURN")) //Unable to determine descriptor for @Inject target method
     private void onTick (CallbackInfo info) {
         PlayerEntity player = (PlayerEntity) (Object) this;
         try (World world = (World) (Object) this) { 
