@@ -4,8 +4,7 @@
   "package": "net.cyndaqua.sunburn.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "Sunfire", 
-    "Daylight"
+    "Sunfire"
   ],
   "client": [],
   "server": [],

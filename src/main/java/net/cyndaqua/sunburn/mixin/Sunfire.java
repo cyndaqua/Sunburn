@@ -24,7 +24,7 @@ public abstract class Sunfire extends Entity { //Intended to damage players if t
 	private void onTick(CallbackInfo ci) {
 		LivingEntity livingEntity = (LivingEntity) (Object) this;
 
-		if (livingEntity instanceof PlayerEntity player) {
+		if (livingEntity instanceof PlayerEntity player && !world.isClient) {
 			if (world.isDay() && !world.isRaining() && !player.isSubmergedInWater() && 13000 < world.getTime() && 11 < world.getLightLevel(LightType.SKY, player.getBlockPos())) {
 				player.damage(DamageSource.IN_FIRE, 4);
 			}
