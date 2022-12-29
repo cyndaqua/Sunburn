@@ -1,0 +1,5 @@
+{
+    "death.attack.sun": "%1$s was blinded by the light.",
+    "death.attack.grass": "%1$s touched grass.",
+    "stat.sunburn.sun_deaths" : "Times Player has died to Sun"
+}

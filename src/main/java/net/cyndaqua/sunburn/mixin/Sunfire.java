@@ -1,9 +1,10 @@
 package net.cyndaqua.sunburn.mixin;
 
+import net.cyndaqua.sunburn.DamageSources.SunDamage;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.LightType;
 import net.minecraft.world.World;
@@ -20,13 +21,18 @@ public abstract class Sunfire extends Entity { //Intended to damage players if t
 		super(type, world);
 	}
 
+
 	@Inject(method = "tick", at = @At("RETURN"))
 	private void onTick(CallbackInfo ci) {
 		LivingEntity livingEntity = (LivingEntity) (Object) this;
 
-		if (livingEntity instanceof PlayerEntity player && !world.isClient) {
-			if (world.isDay() && !world.isRaining() && !player.isSubmergedInWater() && 13000 < world.getTime() && 11 < world.getLightLevel(LightType.SKY, player.getBlockPos())) {
-				player.damage(DamageSource.IN_FIRE, 4);
+		if (livingEntity instanceof PlayerEntity player && world.getRegistryKey() == World.OVERWORLD) {
+			if (world.isDay() && !world.hasRain(player.getBlockPos()) && !player.isSubmergedInWater() && 13000 < world.getTime() && 11 < world.getLightLevel(LightType.SKY, player.getBlockPos()) && player.hasStatusEffect(StatusEffects.FIRE_RESISTANCE)) {
+				String block = player.world.getBlockState(getBlockPos().down(1)).getBlock().getTranslationKey().toString();
+				if (block.endsWith("grass_block") || block.endsWith("grass"))
+					player.damage(SunDamage.SUNGrass, 4);
+				else
+					player.damage(SunDamage.SUN, 4);
 			}
 		}
 	}
